@@ -3,9 +3,10 @@ kind: Service
 metadata:
   name: jenkins
 spec:
-  selector:
-    app: jenkins
+  type: NodePort
   ports:
-    - protocol: TCP
-      port: 8080
+    - port: 8080
       targetPort: 8080
+      nodePort: 30000
+  selector:
+    app: jenkins     
