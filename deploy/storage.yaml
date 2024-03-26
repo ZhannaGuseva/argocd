@@ -11,9 +11,8 @@ spec:
   accessModes:
     - ReadWriteOnce
   persistentVolumeReclaimPolicy: Retain
-  nfs:
-    server: 192.168.59.101
-    path: "/mnt/kubernetes/data/jenkins"
+  hostPath:
+    path: "/data/jenkins"
 
 ---
 kind: PersistentVolumeClaim
@@ -26,6 +25,7 @@ metadata:
 spec:
   accessModes:
     - ReadWriteOnce
+  storageClassName: ""  
   resources:
     requests:
       storage: 5Gi
