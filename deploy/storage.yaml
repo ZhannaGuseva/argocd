@@ -10,6 +10,7 @@ spec:
     storage: 5Gi
   accessModes:
     - ReadWriteOnce
+  storageClassName: jenkins-pv  
   persistentVolumeReclaimPolicy: Retain
   hostPath:
     path: "/data/jenkins"
@@ -25,7 +26,7 @@ metadata:
 spec:
   accessModes:
     - ReadWriteOnce
-  storageClassName: ""  
+  storageClassName: jenkins-pv 
   resources:
     requests:
       storage: 5Gi
