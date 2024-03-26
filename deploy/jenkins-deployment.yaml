@@ -17,6 +17,13 @@ spec:
     spec:
       securityContext:
         fsGroup: 1000
+      initContainers:
+        - name: set-jenkins-home-permissions
+          image: alpine:3.11
+          command: ["sh", "-c", "chown -R 1000:1000 /var/jenkins_home"]
+          volumeMounts:
+            - name: jenkins-home
+              mountPath: /var/jenkins_home  
       containers:
         - name: jenkins
           image: jenkins/jenkins
